@@ -1,12 +1,27 @@
-FROM python:3.11-slim
+FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
+ENV PATH="/root/.cargo/bin:${PATH}"
 WORKDIR /app
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV FLASK_RUN_HOST 0.0.0.0
-ENV PATH "/root/.cargo/bin:${PATH}"
-RUN apt-get update && apt-get install -y gcc
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-COPY requirements.txt requirements.txt
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+
+# Install required packages
+RUN set -xe \
+ && apt-get -y update \
+ && apt-get install -y software-properties-common curl build-essential \
+ && apt-get -y update \
+ && add-apt-repository universe \
+ && apt-get -y update \
+ && apt-get -y install python3 python3-pip \
+ && apt-get clean
+
+# Install Rust
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+
+# Install python packages
+COPY requirements.txt ./
+RUN set -xe \
+ && pip install --upgrade pip \
+ && pip install --no-cache-dir -r requirements.txt
+
+# Copy project files
 COPY . .
-CMD ["python", "app.py"]
+
+CMD ["python3.10", "/app/app.py"]
