@@ -109,16 +109,8 @@ Data Params:
 ```json
 {
   "tasks": [
-    {
-      "data": {
-        "text": "Your text 1"
-      }
-    },
-    {
-      "data": {
-        "text": "Your text 2"
-      }
-    }
+    {"data": {"text": "Your text 1"}},
+    {"data": {"text": "Your text 2"}}
   ]
 }
 ```
