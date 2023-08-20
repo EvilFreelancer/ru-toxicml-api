@@ -15,6 +15,8 @@ This project serves a simple Flask API that uses a model from the Hugging Face's
 Russian text as either neutral or toxic. The model in use is
 [s-nlp/russian_toxicity_classifier](https://huggingface.co/s-nlp/russian_toxicity_classifier).
 
+> More details here: https://dzen.ru/a/ZOIIrENDVgjvKrGB (on russian)
+
 ## Requirements
 
 * Docker
@@ -150,5 +152,6 @@ Success Response:
 
 ## Links
 
+* https://dzen.ru/a/ZOIIrENDVgjvKrGB
 * https://huggingface.co/s-nlp/russian_toxicity_classifier
 * https://github.com/HumanSignal/label-studio-ml-backend/tree/master
