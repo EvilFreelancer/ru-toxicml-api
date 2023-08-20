@@ -1,12 +1,18 @@
 from flask import Flask, request, jsonify
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
+import logging
 
 app = Flask(__name__)
 
 MODEL_NAME = "s-nlp/russian_toxicity_classifier"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
+
+
+@app.on_event('startup')
+def startup():
+    logging.basicConfig(format='%(levelname)s:\t %(message)s', level=logging.INFO)
 
 
 @app.route('/predict', methods=['POST'])

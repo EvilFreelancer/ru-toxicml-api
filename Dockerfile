@@ -16,12 +16,13 @@ RUN set -xe \
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 
 # Install python packages
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir torch==2.0.1
 COPY requirements.txt ./
-RUN set -xe \
- && pip install --upgrade pip \
- && pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . .
 
-CMD ["python3.10", "/app/app.py"]
+#CMD ["python3.10", "/app/app-ls.py"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5000"]
