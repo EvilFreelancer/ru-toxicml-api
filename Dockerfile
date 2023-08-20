@@ -24,5 +24,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project files
 COPY . .
 
-#CMD ["python3.10", "/app/app-ls.py"]
+# Run web-server
 CMD exec gunicorn --preload --bind :5000 --workers 1 --threads 8 --timeout 0 app.main:app

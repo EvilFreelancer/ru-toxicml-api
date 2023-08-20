@@ -4,8 +4,6 @@ services:
 
   toxic-ml:
     build: .
-    environment:
-      - LABEL_STUDIO_USE_REDIS=true
     volumes:
       - ~/.cache/huggingface:/root/.cache/huggingface
     ports:
