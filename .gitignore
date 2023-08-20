@@ -1,4 +1,5 @@
 /.idea/
 /venv/
 /docker-compose.yml
+/cache.db
 __pycache__

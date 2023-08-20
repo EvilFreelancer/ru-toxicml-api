@@ -5,7 +5,7 @@ WORKDIR /app
 # Install required packages
 RUN set -xe \
  && apt-get -y update \
- && apt-get install -y software-properties-common curl build-essential \
+ && apt-get install -y software-properties-common curl build-essential git \
  && apt-get -y update \
  && add-apt-repository universe \
  && apt-get -y update \
@@ -25,4 +25,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 #CMD ["python3.10", "/app/app-ls.py"]
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5000"]
+CMD exec gunicorn --preload --bind :5000 --workers 1 --threads 8 --timeout 0 app.main:app
