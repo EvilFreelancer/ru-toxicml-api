@@ -7,9 +7,9 @@ can identify whether a given text is neutral or toxic. This not only assists in 
 tool for researchers, developers, and platforms to better understand and manage online interactions in the Russian
 digital space.
 
-Furthermore, this API is fully compatible with Label Studio and can be seamlessly integrated as a machine learning
-backend, enabling users to take advantage of the powerful labeling tools provided by
-[Label Studio](https://labelstud.io/) while benefiting from the toxicity classification capabilities of this service.
+Furthermore, this API is fully compatible with [Label Studio](https://labelstud.io/) and can be seamlessly
+integrated as a machine learning backend, enabling users to take advantage of the powerful labeling tools provided by
+Label Studio while benefiting from the toxicity classification capabilities of this service.
 
 This project serves a simple Flask API that uses a model from the Hugging Face's transformers library to classify
 Russian text as either neutral or toxic. The model in use is
