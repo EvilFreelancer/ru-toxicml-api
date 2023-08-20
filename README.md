@@ -31,7 +31,6 @@ NVIDIA drivers installed on your machine.
 For those using Label Studio, the following configuration can be set up for the labeling interface:
 
 ```xml
-
 <View>
     <Text name="text" value="$text"/>
     <Choices name="sentiment" toName="text" showInLine="true">
@@ -81,7 +80,7 @@ docker-compose up -d
 You can check the health status of the service by simply accessing its root (`/`) URL.
 
 * URL: `/`
-* Method: GET
+* Method: `GET`
 
 If everything is running correctly, you should see:
 
@@ -101,8 +100,8 @@ The Predict Toxicity endpoint allows users to submit an array of text strings in
 each text string and returns predictions indicating whether each text is neutral or toxic. Additionally, a score
 representing the confidence of the prediction is provided.
 
-* URL: /predict
-* Method: POST
+* URL: `/predict`
+* Method: `POST`
 
 Data Params:
 
